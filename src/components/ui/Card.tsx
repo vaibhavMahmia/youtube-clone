@@ -1,8 +1,8 @@
-import React from "react";
+
 import { HomePageVideos } from "../../Types"
 import { Link } from "react-router-dom";
 
-export const Card: React.FC = ({ data }: { data: HomePageVideos }) => {
+export const Card = ({ data }: { data: HomePageVideos }) => {
   return (
     <div className="w-60 h-60 flex gap-3 flex-col">
       <div className="relative">

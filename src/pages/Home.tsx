@@ -15,7 +15,12 @@ export const Home: React.FC = () => {
     dispatch(getHomePageVideos(false));
   }, [dispatch]);
 
-  useEffect(() => () => dispatch(clearVideos()), [dispatch]);
+  useEffect(() => {
+    return () => {
+      dispatch(clearVideos());
+    };
+  }, [dispatch]);
+
 
   return (
     <div className="text-center items-center w-3/5">

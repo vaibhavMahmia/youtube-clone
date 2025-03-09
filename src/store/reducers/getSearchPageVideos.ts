@@ -5,7 +5,7 @@ import { YOUTUBE_API_URL } from "../../utils/constants.ts";
 import { HomePageVideos } from "../../Types.ts";
 import { parseData } from "../../utils";
 
-const API_KEY: string = localStorage.getItem('apiKey') || null;
+const API_KEY = localStorage.getItem('apiKey') || null;
 
 export const getSearchPageVideos = createAsyncThunk(
     "youtubeApp/serachPageVideos",
@@ -19,7 +19,7 @@ export const getSearchPageVideos = createAsyncThunk(
             `${YOUTUBE_API_URL}/search?q=${searchTerm}&key=${API_KEY}&part=snippet&type=video&${isNext ? `pageToken=${nextPageTokenFromState}` : ""
             }`
         );
-        const parsedData: HomePageVideos[] = await parseData(items);
+        const parsedData: HomePageVideos[] = await parseData(items) || [];
         return { parsedData: [...videos, ...parsedData], nextPageToken };
     }
 );

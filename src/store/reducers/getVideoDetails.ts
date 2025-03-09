@@ -4,7 +4,7 @@ import { convertRawViewstoString, timeSince } from "../../utils";
 
 import { YOUTUBE_API_URL } from "../../utils/constants";
 
-const API_KEY: string = localStorage.getItem('apiKey') || null;
+const API_KEY = localStorage.getItem('apiKey') || null;
 
 export const getVideoDetails = createAsyncThunk(
   "yotubeApp/videoDetails",
