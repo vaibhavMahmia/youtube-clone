@@ -20,7 +20,7 @@ export const Navbar: React.FC = () => {
         }
     };
     return (
-        <div className='flex justify-between items-center px-14 h-14 bg-[#212121] opacity-95 sticky top-0 z-50'>
+        <div className='flex justify-between items-center px-14 h-14 bg-[#20202056] bg-opacity-80 backdrop-blur-md sticky top-0 z-50'>
             <div className="flex gap-8 items-center text-2xl">
                 
                 <Link to='/'>
@@ -37,12 +37,12 @@ export const Navbar: React.FC = () => {
                         handleSearch();
                     }}
                 >
-                    <div className="flex bg-zinc-900 items-center h-10 px-4 pr-0">
+                    <div className="flex bg-[#77747400] bg-opacity-80 backdrop-blur-md items-center h-10 px-4 pr-0">
                         <div className="flex gap-4 items-center pr-5">
                             <div>
                                 <AiOutlineSearch className='text-xl' />
                             </div>
-                            <input type="text" placeholder='Search' className="w-96 bg-zinc-900 focus:outline-none border-none" value={searchTerm} onChange={(e) => dispatch(changeSearchTerm(e.target.value))}/>
+                            <input type="text" placeholder='Search' className="w-96 bg-[#77747400] bg-opacity-80 backdrop-blur-md focus:outline-none border-none" value={searchTerm} onChange={(e) => dispatch(changeSearchTerm(e.target.value))}/>
                             <AiOutlineClose 
                                 className={`text-xl cursor-pointer ${
                                     !searchTerm ? "invisible" : "visible"
@@ -50,7 +50,7 @@ export const Navbar: React.FC = () => {
                                 onClick={() => dispatch(clearSearchTerm())}
                             />
                         </div>
-                        <button className="h-10 w-16 flex items-center justify-center bg-zinc-800">
+                        <button className="h-10 w-16 flex items-center justify-center bg-[#77747400] bg-opacity-80 backdrop-blur-md">
                             <AiOutlineSearch className='text-xl' />
                         </button>
                     </div>

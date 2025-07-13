@@ -10,7 +10,7 @@ import { clearVideos } from "../store";
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const videos = useAppSelector((state) => state.youtubeApp.videos);
-
+  console.log(videos.length);
   useEffect(() => {
     dispatch(getHomePageVideos(false));
   }, [dispatch]);
@@ -23,11 +23,11 @@ export const Home: React.FC = () => {
 
 
   return (
-    <div className="text-center items-center w-3/5">
+    <div className="text-center items-center w-3/4">
       {
         videos.length ? (
           <InfiniteScroll dataLength={videos.length} next={() => dispatch(getHomePageVideos(true))} hasMore={videos.length < 500} loader={<Spinner />} height={650}>
-            <div className="grid gap-y-14 gap-x-8 grid-cols-3 p-8 items-center text-center">
+            <div className="grid gap-y-15 gap-x-2 grid-cols-3 p-8 items-center text-center">
               {videos.map((item: HomePageVideos) => {
                 return <Card data={item} key={item.videoId} />;
               })}
@@ -35,7 +35,9 @@ export const Home: React.FC = () => {
           </InfiniteScroll>
 
         ) : (
-          <Spinner />
+          <div className="flex justify-center items-center h-[650px]">
+            <Spinner />
+          </div>
         )
       }
     </div>

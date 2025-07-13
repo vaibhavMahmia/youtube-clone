@@ -1,4 +1,8 @@
 export const parseVideoDuration = (duration: string): string => {
+    if (typeof duration !== "string") {
+        duration = String(duration ?? "");
+    }
+    if (!duration || !duration.startsWith("PT")) return "0:00";
     const durationParts: string[] = duration
         .replace("PT", "")
         .replace("H", ":")
@@ -6,21 +10,14 @@ export const parseVideoDuration = (duration: string): string => {
         .replace("S", "")
         .split(":");
 
-    if (durationParts.length === 3) {
-        return `${durationParts[0]}:${parseInt(durationParts[1]) < 9 ? `0${durationParts[1]}` : durationParts[1]
-            }:${parseInt(durationParts[2]) < 9 ? `0${durationParts[2]}` : durationParts[2]
-            }`;
+    // Pad missing parts to always have [hh, mm, ss]
+    while (durationParts.length < 3) {
+        durationParts.unshift("0");
     }
-
-    if (durationParts.length === 2) {
-        return `${durationParts[0]}:${parseInt(durationParts[1]) < 9 ? `0${durationParts[1]}` : durationParts[1]
-            }`;
+    // Ensure all are numbers and pad with 0 if needed
+    const [hh, mm, ss] = durationParts.map((part) => part.padStart(2, "0"));
+    if (hh !== "00") {
+        return `${parseInt(hh)}:${mm}:${ss}`;
     }
-
-    if (durationParts.length === 1) {
-        return `0:${parseInt(durationParts[0]) < 9 ? `0${durationParts[0]}` : durationParts[0]
-            }`;
-    }
-
-    return "";
+    return `${mm}:${ss}`;
 };

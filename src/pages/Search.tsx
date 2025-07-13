@@ -23,24 +23,26 @@ export const Search: React.FC = () => {
   }, [dispatch, navigate, searchTerm]);
 
   return (
-    <>
+    <div className="w-3/4 p-5">
       {
         videos.length ? (
           <InfiniteScroll dataLength={videos.length} next={() => dispatch(getSearchPageVideos(true))} hasMore={videos.length < 500} loader={<Spinner />} height={650}>
-            {videos.map((item: HomePageVideos) => {
-                return (
-                  <div className="my-5">
-                    <SearchCard data={item} key={item.videoId} />
-                  </div>
-                );
-              })}
+            {videos.map((item: HomePageVideos, idx: number) => {
+              return (
+                <div className="my-5" key={idx}>
+                  <SearchCard data={item} />
+                </div>
+              );
+            })}
           </InfiniteScroll>
 
         ) : (
-          <Spinner />
+          <div className="flex justify-center items-center h-[650px]">
+            <Spinner />
+          </div>
         )
       }
-    </>
+    </div>
   )
 
 }

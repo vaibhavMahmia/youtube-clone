@@ -19,15 +19,15 @@ export const Watch: React.FC = () => {
   }, [id, navigate, dispatch]);
 
   return (
-    <>
+    <div className="w-3/4 text-center justify-center items-center">
       {currentPlaying && currentPlaying?.videoId === id && (
         <div className="max-h-screen overflow-hidden">
           <div className="flex w-full" style={{ height: "92.5vh" }}>
             <div className="flex gap-y-10 gap-x-5 p-7 mx-20 mr-0 w-full overflow-auto">
               <div style={{ maxWidth: "800px" }}>
-                <div>
+                <div className="bg-[#20202056] bg-opacity-80 backdrop-blur-md p-5 rounded">
                   <iframe
-                    width="800"
+                    className="w-full"
                     height="502"
                     src={`https://www.youtube.com/embed/${id}?autoplay=1`}
                     title="YouTube video player"
@@ -54,6 +54,6 @@ export const Watch: React.FC = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

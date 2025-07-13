@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Card = ({ data }: { data: HomePageVideos }) => {
   return (
-    <div className="w-60 h-60 flex gap-3 flex-col">
+    <div className="w-80 h-80 flex gap-3 flex-col bg-[#20202056] bg-opacity-80 backdrop-blur-md p-5 rounded">
       <div className="relative">
         <span className="absolute bottom-3 right-3 text-sm bg-gray-900 px-2 py-0.5 z-10">
           {data.videoDuration}
@@ -12,7 +12,7 @@ export const Card = ({ data }: { data: HomePageVideos }) => {
         <Link to={`/watch/${data.videoId}`}>
           <img
             src={data.videoThumbnail}
-            className="h-44 w-60"
+            className="h-44 w-full"
             alt="thumbnail"
           />
         </Link>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const SearchCard = ({ data }: { data: HomePageVideos }) => {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 bg-[#20202056] bg-opacity-80 backdrop-blur-md p-5 rounded">
       <div className="relative">
         <span className="absolute bottom-3 right-3 text-sm bg-gray-900 px-2 py-0.5 z-10">
           {data.videoDuration}
